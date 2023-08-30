@@ -2,11 +2,23 @@
   <form @submit.prevent="handleSubmit">
     <div class="input-group">
       <label for="login">Login</label>
-      <input id="login" v-model="loginInput" type="text" required />
+      <input
+        id="login"
+        v-model="loginInput"
+        autocomplete="username"
+        type="text"
+        required
+      />
     </div>
     <div class="input-group">
       <label for="password">Password</label>
-      <input id="password" v-model="passwordInput" type="password" required />
+      <input
+        id="password"
+        v-model="passwordInput"
+        autocomplete="current-password"
+        type="password"
+        required
+      />
     </div>
     <button type="submit">Login</button>
   </form>
