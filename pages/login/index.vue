@@ -1,21 +1,21 @@
+<script>
+import Login from '@/modules/auth/ui/Login.vue'
+
+export default {
+  components: {
+    Login
+  },
+  layout: 'empty',
+  auth: false
+}
+</script>
+
 <template>
   <div class="auth-container">
     <h1>Login</h1>
     <Login />
   </div>
 </template>
-
-<script lang="ts">
-import Vue from 'vue'
-import Login from '@/modules/auth/ui/Login.vue'
-
-export default Vue.extend({
-  components: {
-    Login
-  },
-  layout: 'empty'
-})
-</script>
 
 <style scoped lang="scss">
 .auth-container {

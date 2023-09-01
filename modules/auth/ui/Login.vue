@@ -1,3 +1,32 @@
+<script>
+import { useLogin } from '@/modules/auth/useCases'
+import { accessTokenKey } from '@/modules/auth/constants'
+
+export default {
+  layout: 'empty',
+  data() {
+    return {
+      loginInput: '',
+      passwordInput: ''
+    }
+  },
+  methods: {
+    ...useLogin(),
+
+    onSuccessLogin(token) {
+      this.$router.push('/home')
+      this.$cookies.set(accessTokenKey, token, {
+        maxAge: 60 * 60 * 24 * 7
+      })
+    },
+
+    handleSubmit() {
+      this.login(this.loginInput, this.passwordInput, this.onSuccessLogin)
+    }
+  }
+}
+</script>
+
 <template>
   <form @submit.prevent="handleSubmit">
     <div class="input-group">
@@ -23,32 +52,6 @@
     <button type="submit">Login</button>
   </form>
 </template>
-
-<script lang="ts">
-import Vue from 'vue'
-import { useLogin } from '@/modules/auth/useCases'
-
-export default Vue.extend({
-  layout: 'empty',
-  data() {
-    return {
-      loginInput: '',
-      passwordInput: ''
-    }
-  },
-  methods: {
-    ...useLogin(),
-
-    onSuccessLogin() {
-      this.$router.push('/home')
-    },
-
-    handleSubmit() {
-      this.login(this.loginInput, this.passwordInput, this.onSuccessLogin)
-    }
-  }
-})
-</script>
 
 <style scoped lang="scss">
 .input-group {

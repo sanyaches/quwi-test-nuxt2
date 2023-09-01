@@ -1,11 +1,33 @@
-<template>
-  <h1>Hello home page</h1>
-</template>
+<script>
+import ProjectList from '@/modules/projects/ui/ProjectList.vue'
+import { useLoadProjectList } from '~/modules/projects/useCases'
 
-<script lang="ts">
-import Vue from 'vue'
+export default {
+  name: 'HomePage',
 
-export default Vue.extend({
-  name: 'HomePage'
-})
+  components: {
+    ProjectList
+  },
+
+  middleware: 'authCheck',
+
+  async asyncData() {
+    const { loadProjectList } = useLoadProjectList()
+    const projects = await loadProjectList()
+
+    return {
+      projects
+    }
+  },
+
+  data() {
+    return {
+      projects: []
+    }
+  }
+}
 </script>
+
+<template>
+  <ProjectList :projects="projects" />
+</template>

@@ -4,21 +4,19 @@
       <NuxtLink to="/" class="logo-link"> Q </NuxtLink>
     </div>
     <nav class="nav">
-      <NuxtLink to="/projects" class="nav-link">Projects</NuxtLink>
-      <NuxtLink class="nav-link" @click="logout">Logout</NuxtLink>
+      <NuxtLink to="/home" class="nav-link">Projects</NuxtLink>
+      <button class="nav-link" @click="logout">Logout</button>
     </nav>
   </header>
 </template>
 
 <script>
+import { accessTokenKey } from '@/modules/auth/constants'
+
 export default {
   methods: {
     logout() {
-      // Implement your logout logic here
-      // For example, clear authentication tokens, redirect, etc.
-      console.log('Logging out...')
-
-      // Redirect to the login page after logging out
+      this.$cookies.remove(accessTokenKey)
       this.$router.push('/login')
     }
   }
