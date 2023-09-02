@@ -29,6 +29,7 @@ export default {
 .project-list-container {
   max-width: 800px;
   margin: 3rem auto 0;
+  padding: 0 1rem;
 
   ul {
     list-style: none;

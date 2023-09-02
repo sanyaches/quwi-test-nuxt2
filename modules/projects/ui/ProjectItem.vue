@@ -64,6 +64,15 @@ export default {
   border: 1px solid #c0c0c0;
   font-family: sans-serif;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
+
   &__logo-container {
     display: flex;
     align-items: center;
@@ -86,6 +95,10 @@ export default {
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
+
+    @media (max-width: 480px) {
+      width: 160px;
+    }
   }
 
   &__status {
