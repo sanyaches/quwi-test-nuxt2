@@ -27,7 +27,14 @@ export default {
     <div class="project-item__logo-container">
       <div class="project-item__image-container">
         <img
+          v-if="project.logo_url"
           :src="project.logo_url"
+          :alt="project.name"
+          class="project-item__image"
+        />
+        <img
+          v-else
+          src="@/assets/images/placeholder.png"
           :alt="project.name"
           class="project-item__image"
         />
