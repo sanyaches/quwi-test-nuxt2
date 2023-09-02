@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <div class="project-item">
+  <div class="project-item" @click="$emit('show-project', project)">
     <div class="project-item__logo-container">
       <div class="project-item__image-container">
         <img
@@ -63,6 +63,11 @@ export default {
   background-color: #fff;
   border: 1px solid #c0c0c0;
   font-family: sans-serif;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -95,6 +100,10 @@ export default {
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     @media (max-width: 480px) {
       width: 160px;
