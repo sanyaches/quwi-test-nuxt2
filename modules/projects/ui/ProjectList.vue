@@ -63,6 +63,9 @@ export default {
   ul {
     list-style: none;
     padding: 0;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    padding-right: 5px;
   }
 
   ul > li:not(:last-child) {
