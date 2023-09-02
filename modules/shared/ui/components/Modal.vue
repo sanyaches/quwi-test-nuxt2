@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      showModal: false
+      showModal: false,
     }
   },
   mounted() {
@@ -23,8 +23,8 @@ export default {
     },
     closeModal() {
       this.showModal = false
-    }
-  }
+    },
+  },
 }
 </script>
 

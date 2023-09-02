@@ -1,4 +1,4 @@
-import { useGetProjects } from "@/modules/projects/services/useGetProjects"
+import { useGetProjects } from '@/modules/projects/services/useGetProjects'
 
 export const useLoadProjectList = () => {
   const { getProjects } = useGetProjects()
@@ -14,6 +14,6 @@ export const useLoadProjectList = () => {
   }
 
   return {
-    loadProjectList
+    loadProjectList,
   }
 }

@@ -3,8 +3,8 @@ export default {
   props: {
     project: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     isActive() {
@@ -17,8 +17,8 @@ export default {
 
     isActiveClass() {
       return this.isActive ? 'is--active' : 'is--inactive'
-    }
-  }
+    },
+  },
 }
 </script>
 

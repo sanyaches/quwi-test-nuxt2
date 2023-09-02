@@ -3,10 +3,10 @@ import Login from '@/modules/auth/ui/Login.vue'
 
 export default {
   components: {
-    Login
+    Login,
   },
   layout: 'empty',
-  auth: false
+  auth: false,
 }
 </script>
 

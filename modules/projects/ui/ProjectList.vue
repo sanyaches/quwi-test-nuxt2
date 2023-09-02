@@ -6,18 +6,18 @@ export default {
   components: {
     ProjectItem,
     Modal,
-    ProjectDetailsModal: () => import('./ProjectDetailsModal.vue')
+    ProjectDetailsModal: () => import('./ProjectDetailsModal.vue'),
   },
 
   props: {
     projects: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
 
   data: () => ({
-    currentProject: null
+    currentProject: null,
   }),
 
   methods: {
@@ -34,8 +34,8 @@ export default {
     onSavedProject() {
       this.closeModal()
       this.$emit('project-saved')
-    }
-  }
+    },
+  },
 }
 </script>
 

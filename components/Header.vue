@@ -18,8 +18,8 @@ export default {
     logout() {
       this.$cookies.remove(accessTokenKey)
       this.$router.push('/login')
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -6,7 +6,7 @@ export default {
   name: 'HomePage',
 
   components: {
-    ProjectList
+    ProjectList,
   },
 
   middleware: 'authCheck',
@@ -16,13 +16,13 @@ export default {
     const projects = await loadProjectList()
 
     return {
-      projects
+      projects,
     }
   },
 
   data() {
     return {
-      projects: []
+      projects: [],
     }
   },
 
@@ -34,8 +34,8 @@ export default {
 
     onSavedProject() {
       this.loadProjects()
-    }
-  }
+    },
+  },
 }
 </script>
 

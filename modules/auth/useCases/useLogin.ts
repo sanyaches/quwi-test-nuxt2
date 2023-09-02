@@ -1,6 +1,6 @@
-import { ref } from "@nuxtjs/composition-api"
-import { useAuth } from "@/modules/auth/infrastructure/services"
-import { useAuthorizeHeader } from "@/modules/shared/infrastructure/api/useAuthorizeHeader"
+import { ref } from '@nuxtjs/composition-api'
+import { useAuth } from '@/modules/auth/infrastructure/services'
+import { useAuthorizeHeader } from '@/modules/shared/infrastructure/api/useAuthorizeHeader'
 
 export const useLogin = () => {
   const { auth } = useAuth()
@@ -27,6 +27,6 @@ export const useLogin = () => {
 
   return {
     login,
-    loading
+    loading,
   }
 }

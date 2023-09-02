@@ -4,7 +4,7 @@ export default {
   middleware: 'authCheck',
   created() {
     this.$router.push('/home')
-  }
+  },
 }
 </script>
 

@@ -1,7 +1,7 @@
-import { ref } from "@nuxtjs/composition-api";
-import type { Project } from "@/modules/projects/domains";
+import { ref } from '@nuxtjs/composition-api'
+import type { Project } from '@/modules/projects/domains'
 
-import { useUpdateProject } from "@/modules/projects/services";
+import { useUpdateProject } from '@/modules/projects/services'
 
 export const useSaveProject = () => {
   const loading = ref(false)
@@ -17,10 +17,10 @@ export const useSaveProject = () => {
     } finally {
       loading.value = false
     }
-  };
+  }
 
   return {
     saveProject,
     loading,
-  };
+  }
 }

@@ -5,18 +5,18 @@ import { useSaveProject } from '@/modules/projects/useCases'
 
 export default {
   components: {
-    SharedButton
+    SharedButton,
   },
   props: {
     project: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props, { emit }) {
     const { loading, saveProject } = useSaveProject()
     const form = reactive({
-      ...props.project
+      ...props.project,
     })
 
     const handleSubmit = async () => {
@@ -29,9 +29,9 @@ export default {
     return {
       loading,
       form,
-      handleSubmit
+      handleSubmit,
     }
-  }
+  },
 }
 </script>
 

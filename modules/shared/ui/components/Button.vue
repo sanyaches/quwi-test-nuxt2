@@ -18,18 +18,18 @@ export default {
   props: {
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     type: {
       type: String,
-      default: 'button'
-    }
+      default: 'button',
+    },
   },
   methods: {
     handleClick() {
       this.$emit('click')
-    }
-  }
+    },
+  },
 }
 </script>
 

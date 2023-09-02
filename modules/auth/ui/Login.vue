@@ -7,7 +7,7 @@ import SharedButton from '@/modules/shared/ui/components/Button.vue'
 
 export default defineComponent({
   components: {
-    SharedButton
+    SharedButton,
   },
   layout: 'empty',
 
@@ -21,7 +21,7 @@ export default defineComponent({
     const onSuccessLogin = (token) => {
       router.push('/home')
       cookies.set(accessTokenKey, token, {
-        maxAge: 60 * 60 * 24 * 7
+        maxAge: 60 * 60 * 24 * 7,
       })
     }
 
@@ -33,9 +33,9 @@ export default defineComponent({
       loginInput,
       passwordInput,
       loading,
-      handleSubmit
+      handleSubmit,
     }
-  }
+  },
 })
 </script>
 
