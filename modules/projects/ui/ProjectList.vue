@@ -21,7 +21,7 @@ export default {
         <ProjectItem :project="project" />
       </li>
     </ul>
-    <p>There is no project, please create one to continue</p>
+    <p v-else>There is no project, please create one to continue</p>
   </div>
 </template>
 
