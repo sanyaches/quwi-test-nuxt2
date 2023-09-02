@@ -30,6 +30,10 @@ export default {
     openProjectDetails(project) {
       this.openModal()
       this.currentProject = project
+    },
+    onSavedProject() {
+      this.closeModal()
+      this.$emit('project-saved')
     }
   }
 }
@@ -45,7 +49,7 @@ export default {
     <p v-else>There is no project, please create one to continue</p>
 
     <Modal ref="modal">
-      <ProjectDetailsModal :project="currentProject" />
+      <ProjectDetailsModal :project="currentProject" @saved="onSavedProject" />
     </Modal>
   </div>
 </template>

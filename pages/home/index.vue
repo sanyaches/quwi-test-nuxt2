@@ -24,10 +24,21 @@ export default {
     return {
       projects: []
     }
+  },
+
+  methods: {
+    async loadProjects() {
+      const { loadProjectList } = useLoadProjectList()
+      this.projects = await loadProjectList()
+    },
+
+    onSavedProject() {
+      this.loadProjects()
+    }
   }
 }
 </script>
 
 <template>
-  <ProjectList :projects="projects" />
+  <ProjectList :projects="projects" @project-saved="onSavedProject" />
 </template>
