@@ -7,7 +7,7 @@ export const useLoadProjectList = () => {
     const res = await getProjects()
 
     if (!res.data.projects) {
-      return
+      return []
     }
 
     return res.data.projects

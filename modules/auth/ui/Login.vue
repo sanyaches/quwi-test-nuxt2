@@ -1,30 +1,42 @@
 <script>
+import { ref, defineComponent, useRouter } from '@nuxtjs/composition-api'
 import { useLogin } from '@/modules/auth/useCases'
 import { accessTokenKey } from '@/modules/auth/constants'
+import { useCookies } from '@/modules/shared/infrastructure/services'
+import SharedButton from '@/modules/shared/ui/components/Button.vue'
 
-export default {
-  layout: 'empty',
-  data() {
-    return {
-      loginInput: '',
-      passwordInput: ''
-    }
+export default defineComponent({
+  components: {
+    SharedButton
   },
-  methods: {
-    ...useLogin(),
+  layout: 'empty',
 
-    onSuccessLogin(token) {
-      this.$router.push('/home')
-      this.$cookies.set(accessTokenKey, token, {
+  setup() {
+    const loginInput = ref('')
+    const passwordInput = ref('')
+    const { loading, login } = useLogin()
+    const router = useRouter()
+    const cookies = useCookies()
+
+    const onSuccessLogin = (token) => {
+      router.push('/home')
+      cookies.set(accessTokenKey, token, {
         maxAge: 60 * 60 * 24 * 7
       })
-    },
+    }
 
-    handleSubmit() {
-      this.login(this.loginInput, this.passwordInput, this.onSuccessLogin)
+    const handleSubmit = () => {
+      login(loginInput.value, passwordInput.value, onSuccessLogin)
+    }
+
+    return {
+      loginInput,
+      passwordInput,
+      loading,
+      handleSubmit
     }
   }
-}
+})
 </script>
 
 <template>
@@ -49,7 +61,9 @@ export default {
         required
       />
     </div>
-    <button type="submit">Login</button>
+    <SharedButton :loading="loading" class="login-button" type="submit">
+      Login
+    </SharedButton>
   </form>
 </template>
 
@@ -69,5 +83,13 @@ input {
   border: 1px solid #ccc;
   border-radius: 3px;
   box-sizing: border-box;
+}
+
+.shareable-button.login-button {
+  display: flex;
+  margin: 0 auto;
+  width: 10rem;
+  font-size: 1.2rem;
+  justify-content: center;
 }
 </style>
