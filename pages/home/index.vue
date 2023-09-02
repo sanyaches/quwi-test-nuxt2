@@ -6,36 +6,40 @@ export default {
   name: 'HomePage',
 
   components: {
-    ProjectList,
+    ProjectList
   },
 
   middleware: 'authCheck',
 
-  async asyncData() {
-    const { loadProjectList } = useLoadProjectList()
+  async asyncData({ $toast }) {
+    const { loadProjectList } = useLoadProjectList((e) => {
+      $toast?.error(`Error during load projects. ${e}`)
+    })
     const projects = await loadProjectList()
 
     return {
-      projects,
+      projects
     }
   },
 
   data() {
     return {
-      projects: [],
+      projects: []
     }
   },
 
   methods: {
     async loadProjects() {
-      const { loadProjectList } = useLoadProjectList()
+      const { loadProjectList } = useLoadProjectList((e) => {
+        this.$toast?.error(`Error during load projects. ${e}`)
+      })
       this.projects = await loadProjectList()
     },
 
     onSavedProject() {
       this.loadProjects()
-    },
-  },
+    }
+  }
 }
 </script>
 

@@ -20,6 +20,7 @@ import Header from '@/components/Header.vue'
   flex-direction: column;
   min-height: 100vh;
   background-color: #fafafa;
+  font-family: sans-serif;
 }
 
 .main {

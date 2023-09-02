@@ -17,6 +17,20 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  hooks: {
+    render: {
+      errorMiddleware(app) {
+        app.use((_, __, res) => {
+          res.writeHead(307, {
+            Location: '/error',
+            error
+          })
+          res.end()
+        })
+      },
+    },
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['normalize.css/normalize.css'],
 
@@ -38,12 +52,19 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'cookie-universal-nuxt',
+    '@nuxtjs/toast',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
+  },
+
+  toast: {
+    position: 'bottom-right',
+    duration: 2000,
+    keepOnHover: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

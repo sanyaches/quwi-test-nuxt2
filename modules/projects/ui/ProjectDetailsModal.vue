@@ -2,26 +2,29 @@
 import { reactive } from '@nuxtjs/composition-api'
 import SharedButton from '@/modules/shared/ui/components/Button.vue'
 import { useSaveProject } from '@/modules/projects/useCases'
+import { useToast } from '@/modules/shared/infrastructure/services/useToast'
 
 export default {
   components: {
-    SharedButton,
+    SharedButton
   },
   props: {
     project: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   setup(props, { emit }) {
     const { loading, saveProject } = useSaveProject()
+    const toast = useToast()
     const form = reactive({
-      ...props.project,
+      ...props.project
     })
 
     const handleSubmit = async () => {
       const success = await saveProject({ ...form })
       if (success) {
+        toast.success('Project saved successfully')
         emit('saved')
       }
     }
@@ -29,9 +32,9 @@ export default {
     return {
       loading,
       form,
-      handleSubmit,
+      handleSubmit
     }
-  },
+  }
 }
 </script>
 
